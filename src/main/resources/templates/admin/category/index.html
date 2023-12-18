@@ -1,0 +1,46 @@
+<!-- src/main/resources/templates/admin/category/index.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Include your head content -->
+</head>
+
+<body>
+
+<div th:replace="fragments/header"></div>
+
+<div class="container">
+    <h2>Category List</h2>
+
+    <!-- Display category list here -->
+    <table class="table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through categories and display them -->
+        <tr th:each="category : ${categories}">
+            <td th:text="${category.id}"></td>
+            <td th:text="${category.name}"></td>
+            <td>
+                <a th:href="@{/admin/category/edit/{id}(id=${category.id})}">Edit</a> |
+                <a th:href="@{/admin/category/delete/{id}(id=${category.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a th:href="@{/admin/category/add}">Add New Category</a>
+</div>
+
+<div th:replace="fragments/footer"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!-- src/main/resources/templates/product/list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User List</title>
+</head>
+<body>
+<h2>Product List</h2>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="user : ${products}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.description}"></td>
+        <td th:text="${user.price}"></td>
+    </tr>
+</table>
+</body>
+</html>

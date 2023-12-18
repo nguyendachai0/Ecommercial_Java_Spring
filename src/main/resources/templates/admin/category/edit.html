@@ -1,0 +1,32 @@
+<!-- src/main/resources/templates/admin/category/edit.html -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Include your head content -->
+</head>
+
+<body>
+
+<div th:replace="fragments/header"></div>
+
+<div class="container">
+    <h2>Edit Category</h2>
+
+    <!-- Edit category form -->
+    <form th:action="@{/admin/category/update}" method="post" th:object="${category}">
+        <input type="hidden" th:field="*{id}"/>
+        <label>Name:</label>
+        <input type="text" th:field="*{name}" required="required"/>
+        <button type="submit">Update</button>
+    </form>
+
+    <a th:href="@{/admin/category}">Back to Category List</a>
+</div>
+
+<div th:replace="fragments/footer"></div>
+
+</body>
+
+</html>

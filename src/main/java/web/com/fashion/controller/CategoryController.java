@@ -32,7 +32,7 @@ public class CategoryController {
 
         @GetMapping("/create")
         public String createForm(Model model) {
-            model.addAttribute("category", new Category());
+            model.addAttribute("name", new Category());
             return "admin/category/create";
         }
 
@@ -42,12 +42,19 @@ public class CategoryController {
             return "redirect:/admin/category";
         }
 
-        @GetMapping("/edit/{id}")
-        public String editForm(@PathVariable Long id, Model model) {
-            Optional<Category> category = categoryService.getCategoryById(id);
-            model.addAttribute("category", category);
+    @GetMapping("/edit/{id}")
+    public String showEditForm(@PathVariable("id") Long id, Model model) {
+        Optional<Category> category = categoryService.getCategoryById(id);
+
+        if (category.isPresent()) {
+            // If the category is present, add it to the model and display the edit form
+            model.addAttribute("category", category.get());
             return "admin/category/edit";
+        } else {
+            // If the category is not present, handle the error (e.g., redirect to an error page)
+            return "redirect:/admin/category";
         }
+    }
 
         @PostMapping("/edit/{id}")
         public String edit(@PathVariable Long id, @ModelAttribute Category category) {

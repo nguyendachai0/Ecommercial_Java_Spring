@@ -11,22 +11,20 @@ public class Product {
     private Long id;
 
     private String name;
-    private String description;
 
-    @Transient
-    private Long category_id;
+
     private double price;
-    @ManyToOne
-    @JoinColumn(name = "category_id") // Adjust the column name based on your database schema
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
     // Constructors, getters, and setters
 
     public Product() {
     }
 
-    public Product(String name, String description, double price) {
+    public Product(String name, double price) {
         this.name = name;
-        this.description = description;
         this.price = price;
 
     }
@@ -48,13 +46,12 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getDescription() {
-        return description;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public double getPrice() {

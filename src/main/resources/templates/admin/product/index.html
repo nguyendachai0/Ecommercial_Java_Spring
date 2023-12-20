@@ -88,14 +88,15 @@
                                         <!-- Display the category information -->
                                         <th scope="row" th:text="${iterStat.count}"></th>
                                         <td th:text="${product.name}"></td>
-                                        <!-- Edit button -->
+
+
+                                        <td th:text="${product.category != null ? product.category.name : 'N/A'}">Category</td>
+
+                                        <td th:text="${product.price}"></td>
+
+
                                         <td>
                                             <a th:href="@{/admin/product/edit/{id}(id=${product.id})}" class="btn btn-warning btn-sm">Edit</a>
-
-                                        </td>
-
-                                        <!-- Delete button -->
-                                        <td>
                                        <a th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                                         </td>
                                     </tr>

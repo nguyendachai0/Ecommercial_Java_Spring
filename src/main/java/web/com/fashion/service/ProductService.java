@@ -1,6 +1,6 @@
+// ProductService.java
 package web.com.fashion.service;
 
-import web.com.fashion.model.Category;
 import web.com.fashion.model.Product;
 
 import java.util.List;
@@ -12,7 +12,7 @@ public interface ProductService {
 
     Optional<Product> getProductById(Long id);
 
-    Product saveProduct(Product product);
+    void saveProduct(Product product);
 
     void deleteProduct(Long id);
 }

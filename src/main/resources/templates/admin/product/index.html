@@ -67,7 +67,7 @@
                         <div class="card-body">
                                 <div class="row">
                                     <h4 class="card-title col-9">Product List</h4>
-                                    <a th:href="@{/admin/category/create}" class="btn btn-success btn-sm col-3">Add new</a>
+                                    <a th:href="@{/admin/product/create}" class="btn btn-success btn-sm col-3">Add new</a>
                                 </div>
 
 
@@ -84,19 +84,19 @@
                                     </thead>
                                     <tbody>
                                     <!-- Iterate over the categories using Thymeleaf th:each -->
-                                    <tr th:each="category, iterStat : ${categories}">
+                                    <tr th:each="product, iterStat : ${products}">
                                         <!-- Display the category information -->
                                         <th scope="row" th:text="${iterStat.count}"></th>
-                                        <td th:text="${category.name}"></td>
+                                        <td th:text="${product.name}"></td>
                                         <!-- Edit button -->
                                         <td>
-                                            <a th:href="@{/admin/category/edit/{id}(id=${category.id})}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a th:href="@{/admin/product/edit/{id}(id=${product.id})}" class="btn btn-warning btn-sm">Edit</a>
 
                                         </td>
 
                                         <!-- Delete button -->
                                         <td>
-                                       <a th:href="@{/admin/category/delete/{id}(id=${category.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                                       <a th:href="@{/admin/product/delete/{id}(id=${product.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
                                         </td>
                                     </tr>
                                     </tbody>

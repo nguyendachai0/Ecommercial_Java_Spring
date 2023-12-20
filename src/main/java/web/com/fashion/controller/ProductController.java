@@ -30,28 +30,32 @@ public class ProductController {
 
     @GetMapping
     public String index(Model model) {
-        List<Product> categories = productService.getAllProducts();
-        model.addAttribute("categories", categories);
+        List<Product> products = productService.getAllProducts();
+        model.addAttribute("products", products);
         return "admin/product/index";
     }
 
     @GetMapping("/create")
     public String createForm(Model model) {
+        model.addAttribute("product", new Product());
         List<Category> categories = categoryService.getAllCategories(); // Replace this with the actual method to get categories
         model.addAttribute("categories", categories);
         return "admin/product/create";
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute Product product) {
+    public String createProduct(@ModelAttribute Product product) {
+        // Logic to save the product to the database
         productService.saveProduct(product);
-        return "redirect:/admin/product";
+        return "redirect:/admin/product"; // Redirect to the product list page
     }
+
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
         Optional<Product> product = productService.getProductById(id);
-
+        List<Category> categories = categoryService.getAllCategories(); // Replace this with the actual method to get categories
+        model.addAttribute("categories", categories);
         if (product.isPresent()) {
             model.addAttribute("product", product.get());
             return "admin/product/edit";

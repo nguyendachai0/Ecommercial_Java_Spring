@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import web.com.fashion.model.Category;
 import web.com.fashion.repository.CategoryRepository;
+import web.com.fashion.service.CategoryService;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,8 +30,8 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category saveCategory(Category category) {
-        return categoryRepository.save(category);
+    public void saveCategory(Category category) {
+        categoryRepository.save(category);
     }
 
     @Override

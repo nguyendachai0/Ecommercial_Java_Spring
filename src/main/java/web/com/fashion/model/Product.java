@@ -1,7 +1,9 @@
-// Product.java
 package web.com.fashion.model;
 
 import jakarta.persistence.*;
+
+import java.util.Optional;
+
 @Entity
 @Table(name = "products")
 public class Product {
@@ -12,9 +14,9 @@ public class Product {
 
     private String name;
 
-
     private double price;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne()
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
@@ -26,10 +28,7 @@ public class Product {
     public Product(String name, double price) {
         this.name = name;
         this.price = price;
-
     }
-
-    // Getter and Setter methods
 
     public Long getId() {
         return id;
@@ -46,13 +45,6 @@ public class Product {
     public void setName(String name) {
         this.name = name;
     }
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     public double getPrice() {
         return price;
@@ -61,4 +53,16 @@ public class Product {
     public void setPrice(double price) {
         this.price = price;
     }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
 }
+// Product.java
+
+// Product.java
+

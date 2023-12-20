@@ -1,3 +1,4 @@
+// CategoryService.java
 package web.com.fashion.service;
 
 import web.com.fashion.model.Category;
@@ -11,7 +12,7 @@ public interface CategoryService {
 
     Optional<Category> getCategoryById(Long id);
 
-    Category saveCategory(Category category);
+    void saveCategory(Category category);
 
     void deleteCategory(Long id);
 }

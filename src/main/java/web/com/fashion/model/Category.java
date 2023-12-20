@@ -1,14 +1,8 @@
-// Category.java
 package web.com.fashion.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "categories")
@@ -20,12 +14,24 @@ public class Category {
 
     private String name;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
     private List<Product> products = new ArrayList<>();
 
     // Constructors, getters, and setters
 
     public Category() {
+    }
+
+    public Category(String name) {
+        this.name = name;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -35,12 +41,14 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-    public Long getId() {
-        return id;
-    }
-    public void setId(Long id) {
-        this.id = id;
+
+    public List<Product> getProducts() {
+        return products;
     }
 
-    // Add other constructors, getters, and setters as needed
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
+    // Other constructors, getters, and setters as needed
 }

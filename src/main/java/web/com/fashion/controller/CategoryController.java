@@ -44,11 +44,11 @@ public class CategoryController {
 
     @GetMapping("/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model) {
-        Optional<Category> category = categoryService.getCategoryById(id);
+        Optional<Category> optionalCategory = categoryService.getCategoryById(id);
 
-        if (category.isPresent()) {
+        if (optionalCategory.isPresent()) {
             // If the category is present, add it to the model and display the edit form
-            model.addAttribute("category", category.get());
+            model.addAttribute("category", optionalCategory.get());
             return "admin/category/edit";
         } else {
             // If the category is not present, handle the error (e.g., redirect to an error page)

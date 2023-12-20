@@ -1,17 +1,18 @@
+// ProductServiceImpl.java
 package web.com.fashion.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import web.com.fashion.model.Category;
 import web.com.fashion.model.Product;
-
 import web.com.fashion.repository.ProductRepository;
+import web.com.fashion.service.ProductService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ProductServiceImpl implements ProductService {
+
     private final ProductRepository productRepository;
 
     @Autowired
@@ -30,12 +31,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product saveProduct(Product product) {
-        return productRepository.save(product);
+    public void saveProduct(Product product) {
+        productRepository.save(product);
     }
 
-
-    public void deleteProduct(Long id){
+    @Override
+    public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 }

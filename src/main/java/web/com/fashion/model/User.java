@@ -10,7 +10,11 @@ public class User {
     private Long id;
 
     private String username;
+    @Column(nullable = false, unique = true, length = 45)
     private String email;
+    @Column(nullable = false)
+    private String password;
+
     // Constructors
     public User() {
         // Default constructor required by JPA
